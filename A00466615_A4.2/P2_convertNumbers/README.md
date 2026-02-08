@@ -1,7 +1,7 @@
 # Actividad 4.2 – P2: Converter - Ejercicio de Programación 1
 
 ## Description
-This project implements the **Converter** program requested in *Actividad 4.2 – Programming Exercise 2*.  
+This project implements the **Converter** program requested in *Actividad 4.2*.  
 The program reads a file containing numeric values and converts each valid number to its **binary** and **hexadecimal** representation.
 
 All computations are performed using **basic algorithms only**, without relying on specialized libraries, in compliance with the assignment requirements.
@@ -27,8 +27,6 @@ The implementation satisfies the following requirements:
 ---
 
 ## Execution
-The minimum format to execute the program is:
-
 ```bash
-python convertNumbers.py fileWithData.txt
+!python convertNumbers/convertNumbers.py convertNumbers/TC1.txt
 
