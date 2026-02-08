@@ -1,7 +1,9 @@
-# Actividad 4.2 – P2: Converter - Ejercicio de Programación 1
+# Actividad 4.2 – Pruebas de Software - Ejercicio de Programación 1
 
-## Description
-This project implements the **Converter** program requested in *Actividad 4.2*.  
+## P2 - Convert Numbers 
+This project implements the **Converter** program requested in *Actividad 4.2*.
+
+## Description  
 The program reads a file containing numeric values and converts each valid number to its **binary** and **hexadecimal** representation.
 
 All computations are performed using **basic algorithms only**, without relying on specialized libraries, in compliance with the assignment requirements.
