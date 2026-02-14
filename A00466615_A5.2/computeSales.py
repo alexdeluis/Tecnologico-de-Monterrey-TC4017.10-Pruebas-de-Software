@@ -77,6 +77,20 @@ def compute_total_sales(sales_data, catalog):
     return total
 
 
+def write_results(total, elapsed_time):
+    """Write results to SalesResults.txt file."""
+    filename = "SalesResults.txt"
+
+    try:
+        with open(filename, "w", encoding="utf-8") as file:
+            file.write("===== SALES SUMMARY =====\n")
+            file.write(f"Total Sales: {total:.2f}\n")
+            file.write(f"Execution time: {elapsed_time:.4f} seconds\n")
+
+    except OSError as error:
+        print(f"Error writing results file: {error}")
+
+
 def main():
     """Main function to control program execution."""
     if len(sys.argv) != 3:
@@ -104,6 +118,8 @@ def main():
     print("\n===== SALES SUMMARY =====")
     print(f"Total Sales: {total_sales:.2f}")
     print(f"Execution time: {elapsed_time:.4f} seconds")
+
+    write_results(total_sales, elapsed_time)
 
 
 if __name__ == "__main__":
