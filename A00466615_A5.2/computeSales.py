@@ -16,15 +16,7 @@ import time
 
 
 def load_json_file(filepath):
-    """
-    Load and return JSON data from a file.
-
-    Args:
-        filepath (str): Path to the JSON file.
-
-    Returns:
-        list | dict | None: Parsed JSON content or None if error occurs.
-    """
+    """Load and return JSON data from a file."""
     try:
         with open(filepath, "r", encoding="utf-8") as file:
             return json.load(file)
@@ -42,15 +34,7 @@ def load_json_file(filepath):
 
 
 def build_price_catalog(product_list):
-    """
-    Build a dictionary mapping product titles to prices.
-
-    Args:
-        product_list (list): List of product dictionaries.
-
-    Returns:
-        dict: Dictionary with product title as key and price as value.
-    """
+    """Build dictionary mapping product titles to prices."""
     catalog = {}
 
     for product in product_list:
@@ -62,6 +46,35 @@ def build_price_catalog(product_list):
             print(f"Missing key in product entry: {error}")
 
     return catalog
+
+
+def compute_total_sales(sales_data, catalog):
+    """Compute total cost of sales."""
+    total = 0.0
+
+    for record in sales_data:
+        try:
+            product_name = record["Product"]
+            quantity = record["Quantity"]
+
+            if quantity <= 0:
+                print(
+                    f"Invalid quantity for product "
+                    f"'{product_name}': {quantity}"
+                )
+                continue
+
+            if product_name not in catalog:
+                print(f"Product not found in catalog: '{product_name}'")
+                continue
+
+            price = catalog[product_name]
+            total += price * quantity
+
+        except KeyError as error:
+            print(f"Missing key in sales record: {error}")
+
+    return total
 
 
 def main():
@@ -83,12 +96,13 @@ def main():
         sys.exit(1)
 
     catalog = build_price_catalog(price_data)
-
-    print(f"Catalog loaded with {len(catalog)} products.")
+    total_sales = compute_total_sales(sales_data, catalog)
 
     end_time = time.time()
     elapsed_time = end_time - start_time
 
+    print("\n===== SALES SUMMARY =====")
+    print(f"Total Sales: {total_sales:.2f}")
     print(f"Execution time: {elapsed_time:.4f} seconds")
 
 
