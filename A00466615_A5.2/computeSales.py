@@ -27,8 +27,7 @@ def load_json_file(filepath):
     """
     try:
         with open(filepath, "r", encoding="utf-8") as file:
-            data = json.load(file)
-            return data
+            return json.load(file)
 
     except FileNotFoundError:
         print(f"Error: File '{filepath}' not found.")
@@ -40,6 +39,29 @@ def load_json_file(filepath):
         print(f"OS error while reading '{filepath}': {error}")
 
     return None
+
+
+def build_price_catalog(product_list):
+    """
+    Build a dictionary mapping product titles to prices.
+
+    Args:
+        product_list (list): List of product dictionaries.
+
+    Returns:
+        dict: Dictionary with product title as key and price as value.
+    """
+    catalog = {}
+
+    for product in product_list:
+        try:
+            title = product["title"]
+            price = product["price"]
+            catalog[title] = price
+        except KeyError as error:
+            print(f"Missing key in product entry: {error}")
+
+    return catalog
 
 
 def main():
@@ -60,7 +82,9 @@ def main():
         print("Program terminated due to file errors.")
         sys.exit(1)
 
-    print("Files loaded successfully.")
+    catalog = build_price_catalog(price_data)
+
+    print(f"Catalog loaded with {len(catalog)} products.")
 
     end_time = time.time()
     elapsed_time = end_time - start_time
