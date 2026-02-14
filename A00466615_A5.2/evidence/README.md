@@ -8,3 +8,14 @@ Files included:
 - execution_TC3.png
 - flake8_report.txt
 - pylint_report.txt
+
+## Notes on Test Cases
+
+TC1 results match the expected Results.txt file.
+
+TC2 and TC3 include invalid data such as:
+- Negative quantities
+- Products not found in catalog
+
+These entries are ignored according to requirement 3,
+therefore totals may differ from the provided reference file.
