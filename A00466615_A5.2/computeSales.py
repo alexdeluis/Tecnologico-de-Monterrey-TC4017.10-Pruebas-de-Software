@@ -94,7 +94,11 @@ def write_results(total, elapsed_time):
 def main():
     """Main function to control program execution."""
     if len(sys.argv) != 3:
-        print("Usage: python computeSales.py priceCatalogue.json salesRecord.json")
+        print(
+          "Usage: python computeSales.py "
+          "priceCatalogue.json salesRecord.json"
+        )
+
         sys.exit(1)
 
     price_file = sys.argv[1]
