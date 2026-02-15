@@ -19,3 +19,5 @@ TC2 and TC3 include invalid data such as:
 
 These entries are ignored according to requirement 3,
 therefore totals may differ from the provided reference file.
+
+Flake8 clean report added after resolving E501 and W292 violations.
