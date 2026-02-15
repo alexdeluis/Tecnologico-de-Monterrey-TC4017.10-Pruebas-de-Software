@@ -1,0 +1,2 @@
+computeSales.py:97:80: E501 line too long (83 > 79 characters)
+computeSales.py:126:11: W292 no newline at end of file
