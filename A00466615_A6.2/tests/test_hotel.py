@@ -2,7 +2,7 @@ import unittest
 from models.hotel import Hotel
 
 import json
-import os
+
 
 class TestHotel(unittest.TestCase):
 
@@ -27,8 +27,8 @@ class TestHotel(unittest.TestCase):
                 name="Invalid Hotel",
                 location="Nowhere",
                 total_rooms=0
-        )
-            
+            )
+
     def test_create_hotel_with_empty_id_should_fail(self):
         with self.assertRaises(ValueError):
             Hotel(
@@ -160,6 +160,7 @@ class TestHotel(unittest.TestCase):
         hotels = Hotel.load_from_file()
 
         self.assertEqual(hotels, [])
+
 
 if __name__ == "__main__":
     unittest.main()

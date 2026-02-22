@@ -1,6 +1,7 @@
 import json
 import os
 
+
 class Hotel:
     def __init__(self, hotel_id, name, location, total_rooms):
 
