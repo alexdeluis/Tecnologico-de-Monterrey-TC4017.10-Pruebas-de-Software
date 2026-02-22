@@ -1,26 +1,5 @@
 [
     {
-        "hotel_id": "H100",
-        "name": "Save Test Hotel",
-        "location": "Monterrey",
-        "total_rooms": 10,
-        "available_rooms": 10
-    },
-    {
-        "hotel_id": "H200",
-        "name": "Load Test Hotel",
-        "location": "Guadalajara",
-        "total_rooms": 8,
-        "available_rooms": 8
-    },
-    {
-        "hotel_id": "H100",
-        "name": "Save Test Hotel",
-        "location": "Monterrey",
-        "total_rooms": 10,
-        "available_rooms": 10
-    },
-    {
         "hotel_id": "H200",
         "name": "Load Test Hotel",
         "location": "Guadalajara",

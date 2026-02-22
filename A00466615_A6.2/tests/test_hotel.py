@@ -151,5 +151,15 @@ class TestHotel(unittest.TestCase):
 
         self.assertTrue(any(h.hotel_id == "H200" for h in hotels))
 
+    def test_load_from_corrupted_json_should_return_empty_list(self):
+        file_path = "data/hotels.json"
+
+        with open(file_path, "w") as file:
+            file.write("INVALID JSON CONTENT")
+
+        hotels = Hotel.load_from_file()
+
+        self.assertEqual(hotels, [])
+
 if __name__ == "__main__":
     unittest.main()
