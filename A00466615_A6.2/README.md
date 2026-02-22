@@ -61,15 +61,27 @@ Total tests: **14**
 
 From the project root:
 
+### Run unit tests
+
 ```bash
 python3 -m unittest discover -s tests
+```
+
+### Run coverage
 
 ```bash
 python3 -m coverage run -m unittest discover -s tests
 python3 -m coverage report -m
+```
+
+### Run flake8
 
 ```bash
 python3 -m flake8 .
+```
+
+### Run pylynt
 
 ```bash
 python3 -m pylint .
+```
