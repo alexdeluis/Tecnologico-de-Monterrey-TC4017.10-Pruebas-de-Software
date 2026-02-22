@@ -1,11 +1,34 @@
+"""
+Unit tests for the Hotel class.
+
+This test suite validates:
+
+- Constructor input validation
+- Negative test cases for invalid data
+- Room reservation functionality
+- Reservation cancellation logic
+- JSON persistence (save and load)
+- Handling of corrupted JSON files
+
+The tests ensure compliance with business rules
+and proper error handling behavior.
+
+Author: Alejandro de Luis
+"""
+
+# pylint: disable=import-error
+
+import json
 import unittest
 from models.hotel import Hotel
 
-import json
-
 
 class TestHotel(unittest.TestCase):
+    """
+    Test suite for Hotel class.
+    """
 
+    # pylint: disable=missing-function-docstring
     def test_create_valid_hotel(self):
         hotel = Hotel(
             hotel_id="H001",
@@ -132,7 +155,7 @@ class TestHotel(unittest.TestCase):
 
         hotel.save_to_file()
 
-        with open("data/hotels.json", "r") as file:
+        with open("data/hotels.json", "r", encoding="utf-8") as file:
             data = json.load(file)
 
         self.assertTrue(any(h["hotel_id"] == "H100" for h in data))
@@ -154,7 +177,7 @@ class TestHotel(unittest.TestCase):
     def test_load_from_corrupted_json_should_return_empty_list(self):
         file_path = "data/hotels.json"
 
-        with open(file_path, "w") as file:
+        with open(file_path, "w", encoding="utf-8") as file:
             file.write("INVALID JSON CONTENT")
 
         hotels = Hotel.load_from_file()
