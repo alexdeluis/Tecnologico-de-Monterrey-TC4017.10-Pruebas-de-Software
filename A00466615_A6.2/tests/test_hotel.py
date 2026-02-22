@@ -96,5 +96,29 @@ class TestHotel(unittest.TestCase):
         with self.assertRaises(ValueError):
             hotel.reserve_room()
 
+    def test_cancel_reservation_should_increase_available_rooms(self):
+        hotel = Hotel(
+            hotel_id="H020",
+            name="Grand Hotel",
+            location="Mexico City",
+            total_rooms=5
+        )
+
+        hotel.reserve_room()
+        hotel.cancel_reservation()
+
+        self.assertEqual(hotel.available_rooms, 5)
+
+    def test_cancel_reservation_when_all_rooms_available_should_fail(self):
+        hotel = Hotel(
+            hotel_id="H021",
+            name="Grand Hotel",
+            location="Mexico City",
+            total_rooms=3
+        )
+
+        with self.assertRaises(ValueError):
+            hotel.cancel_reservation()
+
 if __name__ == "__main__":
     unittest.main()

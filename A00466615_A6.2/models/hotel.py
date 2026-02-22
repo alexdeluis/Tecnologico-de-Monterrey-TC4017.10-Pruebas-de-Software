@@ -30,3 +30,9 @@ class Hotel:
             raise ValueError("No rooms available to reserve")
 
         self.available_rooms -= 1
+
+    def cancel_reservation(self):
+        if self.available_rooms >= self.total_rooms:
+            raise ValueError("No reservations to cancel")
+
+        self.available_rooms += 1
