@@ -1,3 +1,6 @@
+import json
+import os
+
 class Hotel:
     def __init__(self, hotel_id, name, location, total_rooms):
 
@@ -36,3 +39,28 @@ class Hotel:
             raise ValueError("No reservations to cancel")
 
         self.available_rooms += 1
+
+    def save_to_file(self):
+        file_path = "data/hotels.json"
+
+        if not os.path.exists(file_path):
+            with open(file_path, "w") as file:
+                json.dump([], file)
+
+        with open(file_path, "r") as file:
+            try:
+                hotels = json.load(file)
+            except json.JSONDecodeError:
+                print("Invalid JSON format. Resetting file.")
+                hotels = []
+
+        hotels.append({
+            "hotel_id": self.hotel_id,
+            "name": self.name,
+            "location": self.location,
+            "total_rooms": self.total_rooms,
+            "available_rooms": self.available_rooms
+        })
+
+        with open(file_path, "w") as file:
+            json.dump(hotels, file, indent=4)

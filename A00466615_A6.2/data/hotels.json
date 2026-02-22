@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "hotel_id": "H100",
+        "name": "Save Test Hotel",
+        "location": "Monterrey",
+        "total_rooms": 10,
+        "available_rooms": 10
+    }
+]

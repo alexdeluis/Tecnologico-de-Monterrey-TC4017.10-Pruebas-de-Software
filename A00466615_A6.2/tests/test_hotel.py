@@ -1,6 +1,8 @@
 import unittest
 from models.hotel import Hotel
 
+import json
+import os
 
 class TestHotel(unittest.TestCase):
 
@@ -119,6 +121,21 @@ class TestHotel(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             hotel.cancel_reservation()
+
+    def test_save_hotel_to_file(self):
+        hotel = Hotel(
+            hotel_id="H100",
+            name="Save Test Hotel",
+            location="Monterrey",
+            total_rooms=10
+        )
+
+        hotel.save_to_file()
+
+        with open("data/hotels.json", "r") as file:
+            data = json.load(file)
+
+        self.assertTrue(any(h["hotel_id"] == "H100" for h in data))
 
 if __name__ == "__main__":
     unittest.main()
