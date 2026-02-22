@@ -64,15 +64,12 @@ From the project root:
 ```bash
 python3 -m unittest discover -s tests
 
-To run coverage:
 ```bash
 python3 -m coverage run -m unittest discover -s tests
 python3 -m coverage report -m
 
-To run flake:
 ```bash
 python3 -m flake8 .
 
-To run pylint:
 ```bash
 python3 -m pylint .
