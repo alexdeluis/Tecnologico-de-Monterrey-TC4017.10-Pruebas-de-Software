@@ -137,5 +137,19 @@ class TestHotel(unittest.TestCase):
 
         self.assertTrue(any(h["hotel_id"] == "H100" for h in data))
 
+    def test_load_hotels_from_file(self):
+        hotel = Hotel(
+            hotel_id="H200",
+            name="Load Test Hotel",
+            location="Guadalajara",
+            total_rooms=8
+        )
+
+        hotel.save_to_file()
+
+        hotels = Hotel.load_from_file()
+
+        self.assertTrue(any(h.hotel_id == "H200" for h in hotels))
+
 if __name__ == "__main__":
     unittest.main()

@@ -64,3 +64,37 @@ class Hotel:
 
         with open(file_path, "w") as file:
             json.dump(hotels, file, indent=4)
+
+    @classmethod
+    def load_from_file(cls):
+        file_path = "data/hotels.json"
+
+        if not os.path.exists(file_path):
+            return []
+
+        try:
+            with open(file_path, "r") as file:
+                data = json.load(file)
+        except json.JSONDecodeError:
+            print("Invalid JSON format. Returning empty list.")
+            return []
+
+        hotels = []
+        for item in data:
+            try:
+                hotel = cls(
+                    hotel_id=item["hotel_id"],
+                    name=item["name"],
+                    location=item["location"],
+                    total_rooms=item["total_rooms"]
+                )
+                hotel.available_rooms = item.get(
+                    "available_rooms",
+                    hotel.total_rooms
+                )
+                hotels.append(hotel)
+            except (KeyError, ValueError):
+                print("Invalid hotel record found. Skipping.")
+                continue
+
+        return hotels
