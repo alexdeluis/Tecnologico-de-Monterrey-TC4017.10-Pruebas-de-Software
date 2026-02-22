@@ -18,6 +18,14 @@ class TestHotel(unittest.TestCase):
         self.assertEqual(hotel.total_rooms, 100)
         self.assertEqual(hotel.available_rooms, 100)
 
+    def test_create_hotel_with_zero_rooms_should_fail(self):
+        with self.assertRaises(ValueError):
+            Hotel(
+                hotel_id="H002",
+                name="Invalid Hotel",
+                location="Nowhere",
+                total_rooms=0
+        )
 
 if __name__ == "__main__":
     unittest.main()
